@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Security Tests</title>
+</head>
+<body>
+    <h1>Website Security Tests</h1>
+    <form action="/run_tests/" method="post">
+        <label for="url">Enter Website URL:</label>
+        <input type="text" name="url" id="url" required>
+        <button type="submit">Run Tests</button>
+    </form>
+
+    {% if results %}
+    <h2>Results for: {{ url }}</h2>
+    <ul>
+        {% for method, output in results.items() %}
+            <li>
+                <strong>{{ method }}:</strong>
+                <pre>{{ output }}</pre>
+            </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
+</html>
